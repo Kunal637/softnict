@@ -1,4 +1,4 @@
-# Softech - AI-Powered Data Solutions
+# Softnict - AI-Powered Data Solutions
 
 Data-Driven. AI-Powered. Delivering intelligent insights, automation, and predictive analytics for businesses.
 
@@ -61,9 +61,9 @@ npm start
 
 ## Contact
 
-Email: hello@softech.com
+Email: hello@softnict.com
 Phone: +1 (555) 123-4567
 
 ## License
 
-© 2026 Softech. All rights reserved.
+© 2026 Softnict. All rights reserved.

@@ -14,8 +14,8 @@ const roboto = Roboto({
 })
 
 export const metadata = {
-  title: 'Softech | Data-Driven. AI-Powered.',
-  description: 'Softech delivers AI-powered data solutions for businesses. Intelligent insights, automation, and predictive analytics.',
+  title: 'Softnict | Data-Driven. AI-Powered.',
+  description: 'Softnict delivers AI-powered data solutions for businesses. Intelligent insights, automation, and predictive analytics.',
 }
 
 export default function RootLayout({ children }) {

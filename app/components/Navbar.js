@@ -47,7 +47,7 @@ export default function Navbar({ onOpenModal }) {
           <div className={styles.navContainer}>
             <div className={styles.logo}>
               <span className={styles.logoIcon}>S</span>
-              <span className={styles.logoText}>Softech</span>
+              <span className={styles.logoText}>Softnict</span>
             </div>
             
             <ul className={`${styles.navLinks} ${isMobileMenuOpen ? styles.active : ''}`}>
