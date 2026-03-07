@@ -19,7 +19,7 @@ export default function Footer() {
           </div>
           <div className="footer-section">
             <h4>Contact</h4>
-            <p>Email: hello@softnict.com</p>
+            <p>Email: <a href="mailto:info@softnict.com">info@softnict.com</a></p>
             <p>Phone: +1 (555) 123-4567</p>
           </div>
         </div>
