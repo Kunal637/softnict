@@ -9,11 +9,34 @@ export default function ContactModal({ isOpen, onClose }) {
     message: ''
   })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    alert('Thank you for your message! We will get back to you soon.')
-    setFormData({ name: '', email: '', message: '' })
-    onClose()
+    
+    try {
+      const response = await fetch('https://formspree.io/f/mlgpdago', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _replyto: formData.email,
+          _subject: 'New Contact Form Submission from Softnict Website'
+        })
+      })
+      
+      if (response.ok) {
+        alert('Thank you for your message! We will get back to you soon.')
+        setFormData({ name: '', email: '', message: '' })
+        onClose()
+      } else {
+        alert('There was an error sending your message. Please try again.')
+      }
+    } catch (error) {
+      alert('There was an error sending your message. Please try again.')
+    }
   }
 
   const handleChange = (e) => {
