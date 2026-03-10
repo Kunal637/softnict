@@ -17,7 +17,7 @@ export default function Footer() {
                 alt="Softnict Logo" 
                 width={180} 
                 height={220}
-                className="w-35 h-8"
+                className="w-32 h-auto md:w-40 lg:w-48"
               />
             </div>
             <p className="font-semibold dark-mode:text-cyan-400 text-blue-300">Data-Driven. AI-Powered.</p>
@@ -33,7 +33,7 @@ export default function Footer() {
               <li>
                 <a 
                   href="#services" 
-                  className="transition-colors duration-300 dark-mode:text-gray-300 dark-mode:hover:text-cyan-400 text-gray-300 hover:text-blue-300 ml-4"
+                  className="transition-colors duration-300 dark-mode:text-gray-300 dark-mode:hover:text-cyan-400 text-gray-300 hover:text-blue-300"
                 >
                   Services
                 </a>
@@ -41,7 +41,7 @@ export default function Footer() {
               <li>
                 <a 
                   href="#portfolio" 
-                  className="transition-colors duration-300 dark-mode:text-gray-300 dark-mode:hover:text-cyan-400 text-gray-300 hover:text-blue-300 ml-4"
+                  className="transition-colors duration-300 dark-mode:text-gray-300 dark-mode:hover:text-cyan-400 text-gray-300 hover:text-blue-300"
                 >
                   Portfolio
                 </a>
@@ -49,7 +49,7 @@ export default function Footer() {
               <li>
                 <a 
                   href="#about" 
-                  className="transition-colors duration-300 dark-mode:text-gray-300 dark-mode:hover:text-cyan-400 text-gray-300 hover:text-blue-300 ml-4"
+                  className="transition-colors duration-300 dark-mode:text-gray-300 dark-mode:hover:text-cyan-400 text-gray-300 hover:text-blue-300"
                 >
                   About
                 </a>
@@ -57,7 +57,7 @@ export default function Footer() {
               <li>
                 <a 
                   href="#faq" 
-                  className="transition-colors duration-300 dark-mode:text-gray-300 dark-mode:hover:text-cyan-400 text-gray-300 hover:text-blue-300 ml-4"
+                  className="transition-colors duration-300 dark-mode:text-gray-300 dark-mode:hover:text-cyan-400 text-gray-300 hover:text-blue-300"
                 >
                   FAQ
                 </a>
@@ -81,7 +81,7 @@ export default function Footer() {
               <p className="text-sm dark-mode:text-gray-300 text-gray-300">
                 Phone:{' '}
                 <a 
-                  href="tel:+15551234567" 
+                  href="tel:+923312429397" 
                   className="transition-colors duration-300 dark-mode:text-cyan-400 dark-mode:hover:text-cyan-300 text-blue-300 hover:text-blue-200"
                 >
                   +92 3331 2429397
@@ -91,16 +91,16 @@ export default function Footer() {
           </div>
 
           {/* Social Links */}
-          <div className="space-y-4">
+          <div className="space-y-2">
             <h4 className="font-bold text-lg dark-mode:text-white text-gray-100">Follow Us</h4>
-            <div className="flex gap-2 flex-wrap ml-2.5">
+            
+                <div className="flex gap-2 flex-wrap items-center justify-center md:justify-start">
+              
               <a
                 href="https://www.linkedin.com/company/softnict/"
                 target="_blank"
                 rel="noopener noreferrer"
-                // className="social-icon group"
-                  className="social-icon group w-7 h-7 flex items-center justify-center"
-
+                className="social-icon group h-8 w-8"
                 title="LinkedIn"
               >
                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
@@ -111,9 +111,7 @@ export default function Footer() {
                 href="https://www.facebook.com/people/Softnict/61586411626715/?mibextid=rS40aB7S9Ucbxw6v"
                 target="_blank"
                 rel="noopener noreferrer"
-                // className="social-icon group"
-                  className="social-icon group w-7 h-7 flex items-center justify-center"
-
+                className="social-icon group h-8 w-8"
                 title="Facebook"
               >
                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">

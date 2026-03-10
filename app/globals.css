@@ -138,6 +138,209 @@
   }
 }
 
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .container-custom {
+    @apply px-4;
+  }
+
+  .heading-lg {
+    @apply text-3xl md:text-4xl;
+  }
+
+  .heading-md {
+    @apply text-2xl md:text-3xl;
+  }
+
+  .social-icon {
+    @apply w-10 h-10;
+  }
+
+  .social-icon svg {
+    @apply w-4 h-4;
+  }
+
+  footer .container-custom {
+    @apply py-8;
+  }
+
+  footer .grid-cols-4 {
+    @apply grid-cols-1;
+  }
+
+  footer .mb-8 {
+    @apply mb-6;
+  }
+
+  footer .gap-8 {
+    @apply gap-6;
+  }
+
+  footer .space-y-4 > * {
+    @apply text-sm;
+  }
+
+  footer h4 {
+    @apply text-base;
+  }
+
+  footer .flex.gap-2 {
+    @apply gap-3;
+  }
+
+  footer .flex.gap-3 {
+    @apply gap-2;
+  }
+
+  footer .flex.gap-2 .social-icon {
+    @apply w-8 h-8;
+  }
+
+  footer .flex.gap-2 .social-icon svg {
+    @apply w-3 h-3;
+  }
+
+  footer .border-t {
+    @apply border-blue-400/15;
+  }
+
+  footer .pt-8 {
+    @apply pt-6;
+  }
+
+  /* Center footer content on mobile */
+  footer .grid-cols-1 > div {
+    @apply text-center;
+  }
+
+  footer .flex.items-center {
+    @apply justify-center;
+  }
+
+  footer .space-y-4 {
+    @apply text-center;
+  }
+
+  footer .space-y-4 > * {
+    @apply text-center;
+  }
+
+  footer ul {
+    @apply text-center;
+  }
+
+  footer ul li {
+    @apply text-center;
+  }
+
+  footer .flex.gap-2 {
+    @apply justify-center;
+  }
+
+  footer .flex.gap-3 {
+    @apply justify-center;
+  }
+
+  footer .border-t {
+    @apply border-blue-400/15;
+  }
+
+  footer .pt-8 {
+    @apply pt-6;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-lg {
+    @apply text-2xl;
+  }
+
+  .heading-md {
+    @apply text-xl;
+  }
+
+  .container-custom {
+    @apply px-3;
+  }
+
+  footer .container-custom {
+    @apply py-6;
+  }
+
+  footer h4 {
+    @apply text-sm;
+  }
+
+  footer .space-y-4 {
+    @apply space-y-3;
+  }
+
+  footer .flex.gap-2 {
+    @apply gap-2;
+  }
+
+  footer .flex.gap-3 {
+    @apply gap-1.5;
+  }
+
+  footer .flex.gap-2 .social-icon {
+    @apply w-7 h-7;
+  }
+
+  footer .flex.gap-2 .social-icon svg {
+    @apply w-2.5 h-2.5;
+  }
+
+  footer .border-t {
+    @apply border-blue-400/10;
+  }
+
+  footer .pt-8 {
+    @apply pt-5;
+  }
+
+  /* Center footer content on small mobile */
+  footer .grid-cols-1 > div {
+    @apply text-center;
+  }
+
+  footer .flex.items-center {
+    @apply justify-center;
+  }
+
+  footer .space-y-4 {
+    @apply text-center;
+  }
+
+  footer .space-y-4 > * {
+    @apply text-center;
+  }
+
+  footer ul {
+    @apply text-center;
+  }
+
+  footer ul li {
+    @apply text-center;
+  }
+
+  footer .flex.gap-2 {
+    @apply justify-center;
+  }
+
+  footer .flex.gap-3 {
+    @apply justify-center;
+  }
+
+  footer .border-t {
+    @apply border-blue-400/10;
+  }
+
+  footer .pt-8 {
+    @apply pt-5;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
