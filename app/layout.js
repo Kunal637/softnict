@@ -21,7 +21,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} ${roboto.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const theme = localStorage.getItem('theme');
+                if (theme === 'dark') {
+                  document.body.classList.add('dark-mode');
+                } else {
+                  document.body.classList.remove('dark-mode');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className={`${montserrat.variable} ${roboto.variable} font-roboto`}>
         {children}
       </body>
     </html>
