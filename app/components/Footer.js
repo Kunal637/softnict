@@ -84,7 +84,7 @@ export default function Footer() {
                   href="tel:+923312429397" 
                   className="transition-colors duration-300 dark-mode:text-cyan-400 dark-mode:hover:text-cyan-300 text-blue-300 hover:text-blue-200"
                 >
-                  +92 3331 2429397
+                  +92 331 2429397
                 </a>
               </p>
             </div>
