@@ -8,66 +8,72 @@ export default function FAQ() {
   const faqs = [
     {
       question: 'What AI services do you offer?',
-      answer: 'We offer AI integration, custom AI solutions, chatbot development, machine learning models, predictive analytics, natural language processing, and AI consulting services.',
+      answer: 'We cover the full AI delivery stack: LLM integration, custom ML model development, AI chatbots & agents, computer vision, NLP pipelines, data engineering, and strategic consulting. If it involves intelligence in software, we do it.',
     },
     {
       question: 'How long does a typical project take?',
-      answer: 'Project timelines vary based on complexity. Simple integrations take 2-4 weeks, while custom AI solutions typically require 6-12 weeks. We\'ll provide a detailed timeline during consultation.',
+      answer: 'Integrations and chatbot builds: 2–4 weeks. Custom ML systems and data platforms: 6–12 weeks. We scope every project before a contract is signed, so you always know the timeline upfront — no surprises.',
     },
     {
-      question: 'Do you provide ongoing support?',
-      answer: 'Yes! We provide comprehensive support and offer extended maintenance packages for ongoing assistance, updates, and improvements.',
+      question: 'Do you provide ongoing support after launch?',
+      answer: 'Yes. All projects include a 30-day post-launch support window. We also offer structured maintenance retainers covering model retraining, performance monitoring, and feature iterations.',
     },
     {
-      question: 'Can you work with our existing systems?',
-      answer: 'Absolutely! We specialize in integrating AI capabilities into existing applications and systems. We work with various tech stacks and platforms.',
+      question: 'Can you work with our existing tech stack?',
+      answer: "Almost certainly. We've integrated AI into every major cloud (AWS, GCP, Azure), common frameworks (Node, Python, .NET, Laravel), and CRMs, ERPs, and custom APIs. Tell us what you're running — we'll fit around it.",
     },
     {
-      question: 'What industries do you serve?',
-      answer: 'We work with clients across e-commerce, finance, healthcare, education, and more. Our AI solutions are adaptable to any industry\'s specific needs.',
+      question: 'What industries do you work in?',
+      answer: 'E-commerce, fintech, healthcare, logistics, SaaS, legal, and education. Our solutions are domain-agnostic — what matters is your data and your outcome, not your industry label.',
     },
     {
-      question: 'How do I get started?',
-      answer: 'Simply fill out our contact form or use the chatbot to schedule a free consultation. We\'ll discuss your needs and provide a custom proposal.',
+      question: 'How do we get started?',
+      answer: "Book a free 30-minute consultation via the form on this page. We'll listen, ask the right questions, and come back with a clear proposal — scope, timeline, and cost — within 48 hours.",
     },
   ];
 
   return (
-    <section id="faq" className="py-16 md:py-24">
+    <section id="faq" className="py-24 relative">
       <div className="container-custom">
-        {/* Section Title */}
-        <h2 className="heading-md text-center mb-4">Frequently Asked Questions</h2>
-        <p className="text-center text-lg mb-12 md:mb-16 dark-mode:text-gray-300 text-gray-300">
-          Got questions? We've got answers
-        </p>
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="section-label justify-center">
+            <span className="w-5 h-px bg-violet-400"></span>
+            FAQ
+            <span className="w-5 h-px bg-violet-400"></span>
+          </p>
+          <h2 className="heading-md mb-4">Questions worth asking</h2>
+          <p className="text-gray-400">And honest answers to all of them.</p>
+        </div>
 
-        {/* FAQ List */}
-        <div className="max-w-3xl mx-auto space-y-4">
+        {/* Accordion */}
+        <div className="max-w-2xl mx-auto space-y-3">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="card-glass overflow-hidden transition-all duration-300"
+              className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+                activeIndex === index
+                  ? 'border-violet-500/40 bg-violet-600/5'
+                  : 'border-white/[0.08] bg-white/[0.02] hover:border-white/[0.12]'
+              }`}
             >
               <button
-                className="w-full px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors duration-300 dark-mode:hover:bg-white/5"
+                className="w-full px-6 py-4 flex justify-between items-center text-left"
                 onClick={() => setActiveIndex(activeIndex === index ? null : index)}
               >
-                <span className="text-left font-semibold text-lg dark-mode:text-white text-gray-100">
-                  {faq.question}
-                </span>
-                <span
-                  className={`text-2xl transition-transform duration-300 flex-shrink-0 ml-4 dark-mode:text-cyan-400 text-blue-300 ${
-                    activeIndex === index ? 'rotate-45' : ''
-                  }`}
-                >
+                <span className="font-medium text-white pr-4">{faq.question}</span>
+                <span className={`flex-shrink-0 w-6 h-6 rounded-full border flex items-center justify-center text-sm transition-all duration-300 ${
+                  activeIndex === index
+                    ? 'border-violet-400 text-violet-400 bg-violet-400/10 rotate-45'
+                    : 'border-white/20 text-gray-400'
+                }`}>
                   +
                 </span>
               </button>
 
-              {/* Answer */}
               {activeIndex === index && (
-                <div className="px-6 py-4 border-t animate-slide-in dark-mode:border-white/10 dark-mode:bg-white/5 border-blue-400/20 bg-blue-500/5">
-                  <p className="leading-relaxed dark-mode:text-gray-300 text-gray-300">{faq.answer}</p>
+                <div className="px-6 pb-5 animate-slide-in">
+                  <p className="text-gray-400 text-sm leading-relaxed">{faq.answer}</p>
                 </div>
               )}
             </div>

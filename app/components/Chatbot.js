@@ -9,16 +9,9 @@ export default function Chatbot() {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
 
-  const welcomeMessages = [
-    "Hi! 👋 I'm here to help you discover how Softnict can power your business with AI. What can I help you with?",
-    "Hello! 👋 Welcome to Softnict. I'm here to answer your questions about our AI solutions. How can I assist you today?",
-    "Hey there! 👋 Looking to transform your business with AI? I'm here to help. What brings you here today?",
-  ];
-
   useEffect(() => {
     if (messages.length === 0) {
-      const randomWelcome = welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
-      setMessages([{ text: randomWelcome, isUser: false }]);
+      setMessages([{ text: "Hi! I'm Softnict's assistant. Ask me anything about our AI services, timelines, or pricing.", isUser: false }]);
     }
   }, []);
 
@@ -27,154 +20,82 @@ export default function Chatbot() {
   }, [messages]);
 
   const getBotResponse = (userMessage) => {
-    const lowerMessage = userMessage.toLowerCase().trim();
-
-    if (lowerMessage.includes('e-commerce') || lowerMessage.includes('ecommerce') || lowerMessage.includes('online store')) {
-      return 'Perfect! E-commerce is a great fit for AI. We can help with personalized product recommendations, AI chatbots for customer support, inventory forecasting, or automated marketing. What\'s your main goal - increase sales, improve customer service, or automate operations?';
-    }
-
-    if (lowerMessage.includes('website') || lowerMessage.includes('web app') || (lowerMessage.includes('make') && lowerMessage.includes('web'))) {
-      return 'Great! Are you looking to add AI features to your website? We can integrate chatbots, recommendation engines, search optimization, or personalization. What type of website are you building - e-commerce, SaaS, or something else?';
-    }
-
-    if (lowerMessage.match(/^(nlp|natural language|recommendation|predict|forecast)[\s,!.?]*$/i)) {
-      return 'Excellent choice! That\'s one of our specialties. For e-commerce, this could power smart search, customer support chatbots, or review analysis. What\'s your budget range - Starter ($2,500), Professional ($7,500), or Enterprise (custom)?';
-    }
-
-    if ((lowerMessage.includes("i'm ") || lowerMessage.includes('i am ') || lowerMessage.includes('im ') || lowerMessage.includes('my name is ')) &&
-      (lowerMessage.includes('hi') || lowerMessage.includes('hello') || lowerMessage.includes('hey'))) {
-      const nameMatch = userMessage.match(/(?:i'm|i am|im|my name is)\s+([a-zA-Z]+)/i);
-      const name = nameMatch ? nameMatch[1] : '';
-      return `Nice to meet you, ${name}! 👋 How can Softnict help your business today? Are you looking to automate processes, improve customer service, or analyze data?`;
-    }
-
-    if (lowerMessage.match(/^(i'm|i am|im|my name is)\s+[a-zA-Z]+/i)) {
-      const nameMatch = userMessage.match(/(?:i'm|i am|im|my name is)\s+([a-zA-Z]+)/i);
-      const name = nameMatch ? nameMatch[1] : '';
-      return `Nice to meet you, ${name}! 👋 How can Softnict help your business today?`;
-    }
-
-    if (lowerMessage.match(/^(ok|okay|sure|yes|yeah|yep|alright)[\s,!.?]*$/)) {
-      return 'Great! What would you like to know more about? I can tell you about our services, pricing, timeline, or help you book a free consultation.';
-    }
-
-    if (lowerMessage.match(/^(bye|goodbye|see you|thanks|thank you)[\s,!.?]*$/)) {
-      return 'Thank you for chatting with me! If you have any questions later, feel free to reach out at info@softnict.com. Have a great day! 👋';
-    }
-
-    if (lowerMessage.match(/^(hi|hello|hey|good morning|good afternoon)[\s,!.?]*$/)) {
-      return 'Hello! 👋 I\'m here to help you explore how Softnict can transform your business with AI. What brings you here today?';
-    }
-
-    if (lowerMessage.includes('book') || lowerMessage.includes('consultation') || lowerMessage.includes('meeting') || lowerMessage.includes('schedule')) {
-      return 'Perfect! I\'d love to set up a free consultation for you. Please click the "Book Free Consultation" button to fill out the form, or share your email here and I\'ll have our team reach out within 24 hours.';
-    }
-
-    if (lowerMessage.includes('service') || lowerMessage.includes('what do you do') || lowerMessage.includes('offer')) {
-      return 'We offer three main services: AI Integration (connecting AI to your existing systems), Custom AI Solutions (building tailored AI models), and AI Consulting (strategic guidance). Which area interests you most?';
-    }
-
-    if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('pricing') || lowerMessage.includes('budget')) {
-      return 'Our pricing starts at $2,500 for basic AI integration, $7,500 for professional custom solutions, and we offer custom enterprise packages. What\'s your budget range and what problem are you looking to solve?';
-    }
-
-    if (lowerMessage.includes('time') || lowerMessage.includes('how long') || lowerMessage.includes('duration')) {
-      return 'Simple integrations take 2-4 weeks, while custom AI solutions typically need 6-12 weeks. We can provide a detailed timeline once we understand your specific needs. What\'s your ideal launch date?';
-    }
-
-    if (lowerMessage.includes('portfolio') || lowerMessage.includes('project') || lowerMessage.includes('work') || lowerMessage.includes('example')) {
-      return 'We\'ve built AI chatbots that reduced response times by 80%, predictive analytics systems with 95% accuracy, and document processing automation. Check out our portfolio section above! What industry are you in?';
-    }
-
-    if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('reach') || lowerMessage.includes('phone')) {
-      return 'You can reach us at info@softnict.com or +1 (555) 123-4567. We typically respond within 24 hours. Would you like to schedule a call to discuss your project?';
-    }
-
-    if (lowerMessage.includes('ai') || lowerMessage.includes('machine learning') || lowerMessage.includes('automation') || lowerMessage.includes('chatbot')) {
-      return 'We specialize in chatbots, predictive analytics, document processing, natural language processing, and custom ML models. What specific AI capability would help your business most?';
-    }
-
-    if (lowerMessage.includes('@') && lowerMessage.includes('.')) {
-      return 'Thank you for sharing your email! Our team will reach out within 24 hours to schedule your free consultation. In the meantime, what specific AI challenge would you like to discuss?';
-    }
-
-    return 'I\'d love to help you with that! To give you the best answer, could you tell me a bit more? For example: What industry are you in? What\'s your main business challenge? Or feel free to ask about our services, pricing, or book a consultation.';
+    const m = userMessage.toLowerCase().trim();
+    if (m.match(/^(hi|hello|hey)[s,!.?]*$/)) return "Hello! 👋 What can I help you with today?";
+    if (m.includes('service') || m.includes('what do you do') || m.includes('offer')) return "We offer AI Integration, Custom ML Models, Intelligent Automation, Data Engineering, AI Chatbots, and AI Strategy Consulting. Which interests you most?";
+    if (m.includes('price') || m.includes('cost') || m.includes('pricing')) return "Projects start around $2,500 for integrations, $7,500 for custom ML solutions, and enterprise is custom-scoped. Want a free quote?";
+    if (m.includes('time') || m.includes('how long')) return "Integrations: 2–4 weeks. Custom ML systems: 6–12 weeks. We lock down timelines before any contract is signed.";
+    if (m.includes('portfolio') || m.includes('project') || m.includes('example')) return "We've shipped AI chatbots reducing tickets by 60%, a forecasting system at 95% accuracy, and document intelligence processing 10k+ docs/day. Check the portfolio section!";
+    if (m.includes('contact') || m.includes('email')) return "Reach us at info@softnict.com or +92 331 2429397. We respond within 24 hours.";
+    if (m.includes('consult') || m.includes('book') || m.includes('meeting')) return "Great! Click 'Get Started' to book a free 30-minute consultation. No commitment needed.";
+    if (m.includes('support') || m.includes('after') || m.includes('maintain')) return "Yes — all projects include 30-day post-launch support. We also offer monthly maintenance retainers.";
+    if (m.match(/bye|goodbye|thanks|thank you/)) return "Thanks for chatting! 👋 Email info@softnict.com anytime.";
+    return "Good question! To give you the best answer, could you share a bit more context? Or I can tell you about our services, pricing, or help you book a consultation.";
   };
 
-  const handleSend = async () => {
+  const handleSend = () => {
     if (!input.trim()) return;
-
     const userMessage = input.trim();
     setMessages((prev) => [...prev, { text: userMessage, isUser: true }]);
     setInput('');
     setIsTyping(true);
-
     setTimeout(() => {
-      const botResponse = getBotResponse(userMessage);
-      setMessages((prev) => [...prev, { text: botResponse, isUser: false }]);
+      setMessages((prev) => [...prev, { text: getBotResponse(userMessage), isUser: false }]);
       setIsTyping(false);
-    }, 800);
+    }, 700);
   };
 
   return (
     <>
-      {/* Chatbot Toggle Button */}
+      {/* Toggle button */}
       <button
-        className="fixed bottom-8 right-8 w-16 h-16 rounded-full bg-gradient-to-r from-red-500 to-purple-600 text-white shadow-lg shadow-red-500/50 hover:shadow-xl hover:shadow-red-500/70 hover:scale-110 transition-all duration-300 z-40 flex items-center justify-center"
+        className="fixed bottom-6 right-6 w-14 h-14 rounded-2xl bg-violet-600 hover:bg-violet-500 text-white shadow-lg shadow-violet-600/40 hover:shadow-violet-500/50 hover:scale-105 transition-all duration-300 z-40 flex items-center justify-center"
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle chatbot"
+        aria-label="Toggle chat"
       >
-        {!isOpen ? (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
+        {isOpen ? (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         ) : (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         )}
       </button>
 
-      {/* Chatbot Container */}
+      {/* Chat panel */}
       {isOpen && (
-        <div className="fixed bottom-24 right-8 w-96 h-[500px] backdrop-blur-xl rounded-3xl border shadow-2xl shadow-black/50 flex flex-col z-40 animate-slide-in dark-mode:bg-black/80 dark-mode:border-white/10 bg-gray-900/80 border-blue-400/20">
+        <div className="fixed bottom-24 right-6 w-[360px] h-[460px] bg-[#0D1525] border border-white/10 rounded-2xl shadow-2xl shadow-black/60 flex flex-col z-40 animate-slide-in overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-red-500 to-purple-600 px-6 py-4 rounded-t-3xl flex justify-between items-center">
-            <h3 className="text-white font-bold text-lg">AI Assistant</h3>
-            <button
-              className="text-white hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center transition-colors duration-300"
-              onClick={() => setIsOpen(false)}
-            >
-              ✕
-            </button>
+          <div className="px-5 py-4 border-b border-white/[0.06] flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center text-violet-400">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-white">Softnict AI</p>
+              <p className="text-xs text-emerald-400 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Online
+              </p>
+            </div>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
-            {messages.map((msg, index) => (
-              <div
-                key={index}
-                className={`flex ${msg.isUser ? 'justify-end' : 'justify-start'} animate-slide-in`}
-              >
-                <div
-                  className={`max-w-xs px-4 py-2 rounded-lg ${
-                    msg.isUser
-                      ? 'bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-br-none'
-                      : 'dark-mode:bg-white/10 dark-mode:text-gray-200 bg-blue-500/10 text-gray-300 rounded-bl-none'
-                  }`}
-                >
-                  <p className="text-sm leading-relaxed">{msg.text}</p>
+          <div className="flex-1 overflow-y-auto p-4 space-y-3">
+            {messages.map((msg, i) => (
+              <div key={i} className={`flex ${msg.isUser ? 'justify-end' : 'justify-start'}`}>
+                <div className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
+                  msg.isUser
+                    ? 'bg-violet-600 text-white rounded-br-sm'
+                    : 'bg-white/[0.05] border border-white/[0.08] text-gray-300 rounded-bl-sm'
+                }`}>
+                  {msg.text}
                 </div>
               </div>
             ))}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="px-4 py-2 rounded-lg rounded-bl-none dark-mode:bg-white/10 dark-mode:text-gray-200 bg-blue-500/10 text-gray-300">
-                  <div className="flex gap-1">
-                    <span className="w-2 h-2 rounded-full animate-bounce dark-mode:bg-gray-400 bg-gray-500"></span>
-                    <span className="w-2 h-2 rounded-full animate-bounce dark-mode:bg-gray-400 bg-gray-500" style={{ animationDelay: '0.1s' }}></span>
-                    <span className="w-2 h-2 rounded-full animate-bounce dark-mode:bg-gray-400 bg-gray-500" style={{ animationDelay: '0.2s' }}></span>
+                <div className="bg-white/[0.05] border border-white/[0.08] rounded-2xl rounded-bl-sm px-4 py-3">
+                  <div className="flex gap-1 items-center">
+                    {[0, 1, 2].map((i) => (
+                      <span key={i} className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: `${i * 0.12}s` }}></span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -183,23 +104,20 @@ export default function Chatbot() {
           </div>
 
           {/* Input */}
-          <div className="border-t p-4 flex gap-2 dark-mode:border-white/10 border-blue-400/20">
+          <div className="p-3 border-t border-white/[0.06] flex gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-              placeholder="Type your message..."
-              className="flex-1 px-4 py-2 rounded-full focus:outline-none transition-all duration-300 dark-mode:bg-white/10 dark-mode:border-white/20 dark-mode:text-white dark-mode:placeholder-gray-400 dark-mode:focus:border-cyan-400 dark-mode:focus:ring-cyan-400/30 bg-blue-500/10 border-blue-400/30 text-gray-100 placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400/30 border focus:ring-2"
+              placeholder="Ask something..."
+              className="flex-1 bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-violet-500/40 transition-colors duration-200"
             />
             <button
               onClick={handleSend}
-              className="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 to-purple-600 text-white hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+              className="w-9 h-9 rounded-xl bg-violet-600 hover:bg-violet-500 text-white flex items-center justify-center transition-colors duration-200 flex-shrink-0"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-              </svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             </button>
           </div>
         </div>

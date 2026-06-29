@@ -10,87 +10,92 @@ export default function Portfolio() {
     {
       id: 1,
       title: 'AI Chatbot for E-commerce',
-      description: 'Developed an intelligent customer service chatbot that reduced response time by 80%',
+      description: 'Intelligent customer service bot that handles 80% of inquiries without human intervention.',
       image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=600&fit=crop',
       tags: ['NLP', 'OpenAI', 'Python'],
-      details: 'Built a conversational AI chatbot using GPT-4 and custom training data. Integrated with e-commerce platform APIs for real-time order tracking, product recommendations, and customer support. Reduced support tickets by 60% and improved customer satisfaction scores by 45%.',
-      metrics: ['80% faster response time', '60% fewer support tickets', '45% higher satisfaction'],
+      details: 'Built using GPT-4 with custom fine-tuning on client product data. Integrates with Shopify, WooCommerce, and custom REST APIs for real-time order tracking, returns, and recommendations. Deployed via serverless functions with sub-200ms response times.',
+      metrics: ['80% queries automated', '60% fewer tickets', '45% higher CSAT'],
     },
     {
       id: 2,
-      title: 'Predictive Analytics System',
-      description: 'Built ML models for sales forecasting with 95% accuracy',
+      title: 'Predictive Sales Analytics',
+      description: 'ML forecasting system delivering 95% accuracy across SKUs and sales channels.',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-      tags: ['Machine Learning', 'TensorFlow', 'Data Science'],
-      details: 'Developed advanced machine learning models using TensorFlow and scikit-learn for sales forecasting. Analyzed historical data, seasonal trends, and market indicators. Implemented real-time dashboards for business intelligence.',
-      metrics: ['95% prediction accuracy', '30% inventory optimization', '$2M cost savings'],
+      tags: ['TensorFlow', 'Data Science', 'BI'],
+      details: 'End-to-end ML pipeline using gradient boosting and LSTM models trained on 5 years of historical data, seasonality patterns, and external market signals. Integrated with Tableau dashboards for business stakeholders.',
+      metrics: ['95% forecast accuracy', '30% inventory savings', '$2M annual uplift'],
     },
     {
       id: 3,
-      title: 'Document Processing AI',
-      description: 'Automated document extraction and classification system',
+      title: 'Document Intelligence Platform',
+      description: 'Automated extraction and classification processing 10,000+ documents daily.',
       image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop',
-      tags: ['Computer Vision', 'OCR', 'AI'],
-      details: 'Created an intelligent document processing system using computer vision and OCR technology. Automatically extracts, classifies, and validates information from invoices, contracts, and forms. Processes 10,000+ documents daily with 98% accuracy.',
-      metrics: ['98% accuracy rate', '10,000+ docs/day', '90% time saved'],
+      tags: ['Computer Vision', 'OCR', 'FastAPI'],
+      details: 'Vision-language model pipeline for extracting structured data from invoices, contracts, and regulatory forms. Handles multi-format documents (PDF, scan, photo) with adaptive preprocessing. 98% extraction accuracy validated against human review.',
+      metrics: ['98% extraction accuracy', '10,000+ docs/day', '90% processing time saved'],
     },
   ];
 
   return (
     <>
-      <section id="portfolio" className="py-16 md:py-24">
+      <section id="portfolio" className="py-24 relative">
         <div className="container-custom">
-          {/* Section Title */}
-          <h2 className="heading-md text-center mb-4">Our Portfolio</h2>
-          <p className="text-center text-lg mb-12 md:mb-16 dark-mode:text-gray-300 text-gray-300">
-            Recent projects we've delivered
-          </p>
+          {/* Header */}
+          <div className="text-center mb-16">
+            <p className="section-label justify-center">
+              <span className="w-5 h-px bg-violet-400"></span>
+              Case studies
+              <span className="w-5 h-px bg-violet-400"></span>
+            </p>
+            <h2 className="heading-md mb-4">Work that speaks for itself</h2>
+            <p className="text-gray-400 max-w-xl mx-auto">
+              Real outcomes for real businesses. Click any project for the full breakdown.
+            </p>
+          </div>
 
-          {/* Portfolio Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {projects.map((project, index) => (
+          {/* Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project) => (
               <div
                 key={project.id}
-                className="card-glass overflow-hidden cursor-pointer group hover:shadow-2xl transition-all duration-300 hover:scale-105 dark-mode:hover:shadow-cyan-400/30"
+                className="card-glass overflow-hidden cursor-pointer group"
                 onClick={() => setSelectedProject(project)}
-                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Image Container */}
-                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-blue-600 to-cyan-500">
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden rounded-xl mb-5 -mx-6 -mt-6">
                   <Image
                     src={project.image}
                     alt={project.title}
                     width={400}
                     height={300}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                    <span className="text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      View Details →
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050B18] via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-violet-600/0 group-hover:bg-violet-600/10 transition-colors duration-300 flex items-center justify-center">
+                    <span className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2">
+                      View case study
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </span>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-5">
-                  <h3 className="text-lg font-bold mb-2 transition-colors duration-300 dark-mode:text-white dark-mode:group-hover:text-cyan-400 text-gray-100 group-hover:text-blue-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm mb-4 leading-relaxed dark-mode:text-gray-300 text-gray-300">
-                    {project.description}
-                  </p>
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {project.tags.map((tag, i) => (
+                    <span key={i} className="tag-pill">{tag}</span>
+                  ))}
+                </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 text-xs font-medium rounded-full border transition-colors duration-300 dark-mode:bg-cyan-400/20 dark-mode:text-cyan-400 dark-mode:border-cyan-400/30 dark-mode:hover:bg-cyan-400/30 bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                <h3 className="text-base font-semibold text-white mb-2 group-hover:text-violet-300 transition-colors duration-200">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{project.description}</p>
+
+                {/* Metrics row */}
+                <div className="mt-4 pt-4 border-t border-white/[0.06] flex gap-3">
+                  {project.metrics.slice(0, 2).map((m, i) => (
+                    <span key={i} className="text-xs text-emerald-400 font-medium">{m}</span>
+                  ))}
                 </div>
               </div>
             ))}
@@ -98,26 +103,24 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Project Detail Modal */}
+      {/* Modal */}
       {selectedProject && (
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in"
+          className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="bg-black/80 backdrop-blur-xl rounded-3xl max-w-2xl w-full p-8 border border-white/10 relative max-h-[90vh] overflow-y-auto dark-mode:bg-black/80 dark-mode:border-white/10 bg-gray-900/80 border-blue-400/20"
+            className="bg-[#0D1525] border border-white/10 rounded-2xl max-w-2xl w-full p-8 relative max-h-[90vh] overflow-y-auto animate-fade-in-up"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
-              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-300"
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 text-gray-400 hover:text-white transition-all duration-200 text-lg leading-none"
               onClick={() => setSelectedProject(null)}
             >
               ✕
             </button>
 
-            {/* Project Image */}
-            <div className="relative h-64 mb-6 rounded-2xl overflow-hidden">
+            <div className="relative h-56 mb-6 rounded-xl overflow-hidden">
               <Image
                 src={selectedProject.image}
                 alt={selectedProject.title}
@@ -127,40 +130,19 @@ export default function Portfolio() {
               />
             </div>
 
-            {/* Project Title */}
-            <h2 className="text-3xl font-bold mb-4 dark-mode:text-white text-gray-100">
-              {selectedProject.title}
-            </h2>
-
-            {/* Project Details */}
-            <p className="leading-relaxed mb-6 dark-mode:text-gray-300 text-gray-300">
-              {selectedProject.details}
-            </p>
-
-            {/* Key Metrics */}
-            <div className="mb-6">
-              <h3 className="text-xl font-bold mb-4 dark-mode:text-cyan-400 text-blue-300">Key Metrics</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {selectedProject.metrics.map((metric, i) => (
-                  <div
-                    key={i}
-                    className="rounded-lg p-3 text-center dark-mode:bg-cyan-400/10 dark-mode:border-cyan-400/30 dark-mode:text-cyan-400 bg-blue-500/10 border-blue-400/30 text-blue-300 border"
-                  >
-                    <p className="font-semibold text-sm">{metric}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {selectedProject.tags.map((tag, i) => <span key={i} className="tag-pill">{tag}</span>)}
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2">
-              {selectedProject.tags.map((tag, i) => (
-                <span
-                  key={i}
-                  className="px-4 py-2 text-sm font-medium rounded-full border dark-mode:bg-cyan-400/20 dark-mode:text-cyan-400 dark-mode:border-cyan-400/30 bg-blue-500/20 text-blue-300 border-blue-400/30"
-                >
-                  {tag}
-                </span>
+            <h2 className="text-2xl font-bold text-white mb-3">{selectedProject.title}</h2>
+            <p className="text-gray-400 leading-relaxed mb-6">{selectedProject.details}</p>
+
+            <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">Key results</h3>
+            <div className="grid grid-cols-3 gap-3">
+              {selectedProject.metrics.map((metric, i) => (
+                <div key={i} className="bg-emerald-400/5 border border-emerald-400/20 rounded-xl p-3 text-center">
+                  <p className="text-sm font-semibold text-emerald-400">{metric}</p>
+                </div>
               ))}
             </div>
           </div>

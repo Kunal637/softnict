@@ -1,43 +1,27 @@
-import { Montserrat, Roboto } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 
-const montserrat = Montserrat({ 
+const inter = Inter({ 
   subsets: ['latin'],
-  weight: ['600', '700', '800'],
-  variable: '--font-montserrat'
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-inter'
 })
 
-const roboto = Roboto({ 
+const spaceGrotesk = Space_Grotesk({ 
   subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-roboto'
+  weight: ['400', '500', '600'],
+  variable: '--font-space-grotesk'
 })
 
 export const metadata = {
-  title: 'Softnict | Data-Driven. AI-Powered.',
-  description: 'Softnict delivers AI-powered data solutions for businesses. Intelligent insights, automation, and predictive analytics.',
+  title: 'Softnict | AI-Powered Software Solutions',
+  description: 'Softnict builds intelligent software products — AI integrations, custom ML systems, and data-driven automation for modern businesses.',
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const theme = localStorage.getItem('theme');
-                if (theme === 'dark') {
-                  document.body.classList.add('dark-mode');
-                } else {
-                  document.body.classList.remove('dark-mode');
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
-      <body className={`${montserrat.variable} ${roboto.variable} font-roboto`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-space-grotesk antialiased`}>
         {children}
       </body>
     </html>
