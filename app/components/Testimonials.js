@@ -40,7 +40,7 @@ export default function Testimonials() {
               <p className="text-sm leading-relaxed flex-grow mb-6" style={{ color: 'var(--text-muted)' }}>"{t.text}"</p>
 
               <div className="flex items-center gap-3 pt-5" style={{ borderTop: '1px solid var(--border-soft)' }}>
-                <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style={{ background: 'linear-gradient(135deg, #0EA5E9, #0369A1)' }}>
+                <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style={{ background: 'var(--accent-grad)' }}>
                   {t.initials}
                 </div>
                 <div>

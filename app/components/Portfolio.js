@@ -59,8 +59,8 @@ export default function Portfolio() {
                 <div className="relative h-44 sm:h-48 overflow-hidden">
                   <Image src={p.image} alt={p.title} width={400} height={300} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 transition-all duration-300" style={{ background: 'linear-gradient(to top, rgba(4,12,24,0.9) 0%, rgba(4,12,24,0.2) 100%)' }} />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'rgba(14,165,233,0.08)' }}>
-                    <span className="text-white text-xs font-semibold flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: 'rgba(14,165,233,0.2)', border: '1px solid rgba(14,165,233,0.3)' }}>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'rgba(var(--accent-rgb),0.08)' }}>
+                    <span className="text-white text-xs font-semibold flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: 'rgba(var(--accent-rgb),0.2)', border: '1px solid rgba(var(--accent-rgb),0.3)' }}>
                       View case study
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </span>
@@ -71,7 +71,7 @@ export default function Portfolio() {
                   <div className="flex flex-wrap gap-1.5 mb-3">
                     {p.tags.map((t, i) => <span key={i} className="tag-pill">{t}</span>)}
                   </div>
-                  <h3 className="text-sm font-semibold mb-2 group-hover:text-sky-300 transition-colors duration-200" style={{ color: 'var(--text-primary)' }}>{p.title}</h3>
+                  <h3 className="text-sm font-semibold mb-2 transition-colors duration-200" style={{ color: 'var(--text-primary)' }}>{p.title}</h3>
                   <p className="text-xs leading-relaxed mb-4" style={{ color: 'var(--text-muted)' }}>{p.description}</p>
                   <div className="flex flex-wrap gap-x-4 gap-y-1">
                     {p.metrics.slice(0, 2).map((m, i) => (

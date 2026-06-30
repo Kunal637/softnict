@@ -32,8 +32,8 @@ export default function FAQ() {
               key={i}
               className="rounded-xl overflow-hidden transition-all duration-300"
               style={{
-                background: active === i ? 'rgba(14,165,233,0.05)' : 'var(--card-bg)',
-                border: `1px solid ${active === i ? 'rgba(14,165,233,0.25)' : 'var(--border)'}`,
+                background: active === i ? 'rgba(var(--accent-rgb),0.05)' : 'var(--card-bg)',
+                border: `1px solid ${active === i ? 'rgba(var(--accent-rgb),0.25)' : 'var(--border)'}`,
               }}
             >
               <button
@@ -44,9 +44,9 @@ export default function FAQ() {
                 <span
                   className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-sm font-light transition-all duration-300"
                   style={{
-                    background: active === i ? 'rgba(14,165,233,0.15)' : 'rgba(255,255,255,0.05)',
-                    border: `1px solid ${active === i ? 'rgba(14,165,233,0.4)' : 'var(--border-soft)'}`,
-                    color: active === i ? '#0EA5E9' : 'var(--text-muted)',
+                    background: active === i ? 'rgba(var(--accent-rgb),0.15)' : 'rgba(255,255,255,0.05)',
+                    border: `1px solid ${active === i ? 'rgba(var(--accent-rgb),0.4)' : 'var(--border-soft)'}`,
+                    color: active === i ? 'var(--accent)' : 'var(--text-muted)',
                     transform: active === i ? 'rotate(45deg)' : 'none',
                   }}
                 >

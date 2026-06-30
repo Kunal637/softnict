@@ -7,11 +7,11 @@ export default function CTA({ onOpenModal }) {
         <div
           className="relative rounded-2xl overflow-hidden p-8 sm:p-12 md:p-16 text-center"
           style={{
-            border: '1px solid rgba(14,165,233,0.18)',
-            background: 'linear-gradient(135deg, rgba(14,165,233,0.07) 0%, var(--surface) 50%, rgba(249,115,22,0.04) 100%)',
+            border: '1px solid rgba(var(--accent-rgb),0.18)',
+            background: 'linear-gradient(135deg, rgba(var(--accent-rgb),0.07) 0%, var(--surface) 50%, rgba(249,115,22,0.04) 100%)',
           }}
         >
-          <div className="absolute pointer-events-none" style={{ top: -60, right: -60, width: 220, height: 220, borderRadius: '50%', background: 'rgba(14,165,233,0.12)', filter: 'blur(70px)' }} />
+          <div className="absolute pointer-events-none" style={{ top: -60, right: -60, width: 220, height: 220, borderRadius: '50%', background: 'rgba(var(--accent-rgb),0.12)', filter: 'blur(70px)' }} />
           <div className="absolute pointer-events-none" style={{ bottom: -60, left: -60, width: 180, height: 180, borderRadius: '50%', background: 'rgba(249,115,22,0.08)', filter: 'blur(70px)' }} />
 
           <div className="relative z-10">

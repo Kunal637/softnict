@@ -33,6 +33,7 @@ export default function Hero({ onOpenModal }) {
     const draw = () => {
       const w = canvas.width, h = canvas.height;
       ctx.clearRect(0, 0, w, h);
+      const accentRgb = getComputedStyle(document.documentElement).getPropertyValue('--accent-rgb').trim() || '14,165,233';
       const dotOpacity = theme === 'dark' ? 0.55 : 0.45;
       const lineOpacity = theme === 'dark' ? 0.13 : 0.10;
 
@@ -42,7 +43,7 @@ export default function Hero({ onOpenModal }) {
         if (d.y < 0) d.y = h; if (d.y > h) d.y = 0;
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(14,165,233,${dotOpacity})`;
+        ctx.fillStyle = `rgba(${accentRgb},${dotOpacity})`;
         ctx.fill();
       });
 
@@ -55,7 +56,7 @@ export default function Hero({ onOpenModal }) {
             ctx.beginPath();
             ctx.moveTo(dots[i].x, dots[i].y);
             ctx.lineTo(dots[j].x, dots[j].y);
-            ctx.strokeStyle = `rgba(14,165,233,${lineOpacity * (1 - dist / 155)})`;
+            ctx.strokeStyle = `rgba(${accentRgb},${lineOpacity * (1 - dist / 155)})`;
             ctx.lineWidth = 0.9;
             ctx.stroke();
           }
@@ -72,7 +73,7 @@ export default function Hero({ onOpenModal }) {
     <section id="home" className="relative min-h-[100svh] flex items-center overflow-hidden">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      <div className="absolute pointer-events-none" style={{ top: '-15%', left: '-8%', width: 500, height: 500, maxWidth: '90vw', borderRadius: '50%', background: 'rgba(14,165,233,0.12)', filter: 'blur(100px)', animation: 'orb-pulse 10s ease-in-out infinite' }} />
+      <div className="absolute pointer-events-none" style={{ top: '-15%', left: '-8%', width: 500, height: 500, maxWidth: '90vw', borderRadius: '50%', background: 'rgba(var(--accent-rgb),0.12)', filter: 'blur(100px)', animation: 'orb-pulse 10s ease-in-out infinite' }} />
       <div className="absolute pointer-events-none" style={{ bottom: '-10%', right: '-5%', width: 420, height: 420, maxWidth: '90vw', borderRadius: '50%', background: 'rgba(249,115,22,0.07)', filter: 'blur(90px)', animation: 'orb-pulse 14s ease-in-out infinite reverse' }} />
 
       <div className="container-custom relative z-10 py-20 sm:py-28">
@@ -80,7 +81,7 @@ export default function Hero({ onOpenModal }) {
 
           <div
             className="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-6 sm:mb-8 animate-fade-in-up"
-            style={{ background: 'rgba(14,165,233,0.08)', border: '1px solid rgba(14,165,233,0.2)', color: '#38BDF8' }}
+            style={{ background: 'rgba(var(--accent-rgb),0.08)', border: '1px solid rgba(var(--accent-rgb),0.2)', color: 'var(--accent)' }}
           >
             <span className="glow-dot" />
             <span className="whitespace-nowrap">AI-Powered Software Agency · Est. 2020</span>

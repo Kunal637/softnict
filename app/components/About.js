@@ -42,7 +42,7 @@ export default function About() {
 
   return (
     <section id="about" className="py-16 sm:py-24 md:py-28 relative" ref={ref}>
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(14,165,233,0.04) 0%, transparent 70%)' }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(var(--accent-rgb),0.04) 0%, transparent 70%)' }} />
 
       <div className="container-custom relative">
         <div className="text-center mb-10 sm:mb-16">
@@ -61,7 +61,7 @@ export default function About() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 mb-8 sm:mb-12">
           {stats.map((s, i) => (
             <div key={i} className="card-glass text-center group">
-              <div className="text-4xl sm:text-5xl font-bold mb-1 group-hover:text-sky-300 transition-colors duration-300" style={{ fontFamily: 'var(--font-dm-sans)', color: '#0EA5E9' }}>
+              <div className="text-4xl sm:text-5xl font-bold mb-1 transition-colors duration-300" style={{ fontFamily: 'var(--font-dm-sans)', color: 'var(--accent)' }}>
                 {s.value}<span style={{ color: '#F97316' }}>{s.suffix}</span>
               </div>
               <p className="text-base font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>{s.label}</p>

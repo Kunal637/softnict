@@ -93,7 +93,7 @@ export default function Chatbot() {
     <>
       <button
         className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 w-13 h-13 sm:w-14 sm:h-14 rounded-2xl text-white z-40 flex items-center justify-center transition-all duration-300 hover:scale-105"
-        style={{ width: 56, height: 56, background: 'linear-gradient(135deg, #0EA5E9, #0369A1)', boxShadow: '0 8px 28px rgba(14,165,233,0.4)' }}
+        style={{ width: 56, height: 56, background: 'var(--accent-grad)', boxShadow: '0 8px 28px rgba(var(--accent-rgb),0.4)' }}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle chat"
       >
@@ -112,8 +112,8 @@ export default function Chatbot() {
           style={{ background: 'var(--surface)', border: '1px solid var(--border)', boxShadow: '0 20px 60px rgba(0,0,0,0.35)' }}
         >
           {/* Header */}
-          <div className="px-5 py-4 flex items-center gap-3" style={{ borderBottom: '1px solid var(--border)', background: 'linear-gradient(135deg, rgba(14,165,233,0.06), transparent)' }}>
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(14,165,233,0.12)', border: '1px solid rgba(14,165,233,0.25)', color: '#0EA5E9' }}>
+          <div className="px-5 py-4 flex items-center gap-3" style={{ borderBottom: '1px solid var(--border)', background: 'linear-gradient(135deg, rgba(var(--accent-rgb),0.06), transparent)' }}>
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(var(--accent-rgb),0.12)', border: '1px solid rgba(var(--accent-rgb),0.25)', color: 'var(--accent)' }}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
             </div>
             <div className="flex-1">
@@ -132,8 +132,8 @@ export default function Chatbot() {
                 <div
                   className="max-w-[88%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed"
                   style={msg.isUser
-                    ? { background: 'linear-gradient(135deg, #0EA5E9, #0369A1)', color: 'white', borderBottomRightRadius: 4 }
-                    : { background: 'rgba(14,165,233,0.05)', border: '1px solid var(--border-soft)', color: 'var(--text-primary)', borderBottomLeftRadius: 4 }
+                    ? { background: 'var(--accent-grad)', color: 'white', borderBottomRightRadius: 4 }
+                    : { background: 'rgba(var(--accent-rgb),0.05)', border: '1px solid var(--border-soft)', color: 'var(--text-primary)', borderBottomLeftRadius: 4 }
                   }
                 >
                   {msg.text}
@@ -143,10 +143,10 @@ export default function Chatbot() {
 
             {isTyping && (
               <div className="flex justify-start">
-                <div className="rounded-2xl px-4 py-3" style={{ background: 'rgba(14,165,233,0.05)', border: '1px solid var(--border-soft)', borderBottomLeftRadius: 4 }}>
+                <div className="rounded-2xl px-4 py-3" style={{ background: 'rgba(var(--accent-rgb),0.05)', border: '1px solid var(--border-soft)', borderBottomLeftRadius: 4 }}>
                   <div className="flex gap-1 items-center">
                     {[0, 1, 2].map((i) => (
-                      <span key={i} className="w-1.5 h-1.5 rounded-full" style={{ background: '#0EA5E9', animation: `floatY 1s ease-in-out ${i * 0.15}s infinite` }} />
+                      <span key={i} className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent)', animation: `floatY 1s ease-in-out ${i * 0.15}s infinite` }} />
                     ))}
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export default function Chatbot() {
                     key={i}
                     onClick={() => sendMessage(s)}
                     className="text-xs px-3 py-1.5 rounded-full transition-all duration-200"
-                    style={{ background: 'rgba(14,165,233,0.06)', border: '1px solid rgba(14,165,233,0.2)', color: '#0EA5E9' }}
+                    style={{ background: 'rgba(var(--accent-rgb),0.06)', border: '1px solid rgba(var(--accent-rgb),0.2)', color: 'var(--accent)' }}
                   >
                     {s}
                   </button>
@@ -186,7 +186,7 @@ export default function Chatbot() {
             <button
               onClick={handleSend}
               className="w-10 h-10 rounded-xl text-white flex items-center justify-center flex-shrink-0 transition-transform duration-200 hover:scale-105"
-              style={{ background: 'linear-gradient(135deg, #0EA5E9, #0369A1)' }}
+              style={{ background: 'var(--accent-grad)' }}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             </button>
