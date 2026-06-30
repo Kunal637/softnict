@@ -12,20 +12,20 @@ export default function Portfolio() {
 
   const projects = [
     {
-      id: 1, title: 'AI Chatbot for E-commerce',
-      description: 'Intelligent customer service bot handling 80% of inquiries without human intervention.',
-      image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=600&fit=crop',
-      tags: ['NLP', 'OpenAI', 'Python'],
-      details: 'Built with GPT-4 and custom fine-tuning on client product data. Integrates via REST API with Shopify and WooCommerce for real-time order tracking, returns, and recommendations. Serverless deploy, sub-200ms response times.',
-      metrics: ['80% queries automated', '60% fewer tickets', '45% higher CSAT'],
+      id: 1, title: 'Automated Email Response System',
+      description: 'Every customer email gets sorted and answered automatically — orders, questions, and support requests, all drafted and ready in seconds.',
+      image: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&h=600&fit=crop',
+      tags: ['Customer Support', 'Time Savings', 'Email'],
+      details: 'Built for a business drowning in repetitive inbox traffic. The system reads every incoming email the moment it arrives, figures out what the customer actually wants — an order question, a general inquiry, or a support issue — and writes a ready-to-send reply in the business\u2019s own tone. Every draft lands in the inbox for a quick human check before going out, so nothing gets sent without approval. No more re-reading the same three questions fifty times a day.',
+      metrics: ['80% faster replies', 'Hours saved daily', 'Zero missed emails'],
     },
     {
-      id: 2, title: 'Predictive Sales Analytics',
-      description: 'ML forecasting system delivering 95% accuracy across all SKUs and sales channels.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-      tags: ['TensorFlow', 'Data Science', 'BI'],
-      details: 'End-to-end ML pipeline: gradient boosting + LSTM trained on 5 years of sales data, seasonal trends, and external market signals. Tableau dashboards for stakeholders. Retrained monthly on new data automatically.',
-      metrics: ['95% forecast accuracy', '30% inventory savings', '$2M annual uplift'],
+      id: 2, title: 'SEO Content & Research Engine',
+      description: 'Turns a single topic into a full SEO report — keywords, an optimized article, competitor research, and ranking strategy — delivered straight to Google Docs.',
+      image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&h=600&fit=crop',
+      tags: ['Marketing', 'Content', 'Research'],
+      details: 'Built for agencies and content teams who were spending entire days per article on research alone. Type in one topic, and the system finds the right keywords, writes an SEO-ready article, studies what competitors are ranking for, and puts together a strategy for climbing the rankings — then drops the finished report into a Google Doc, fully formatted and ready to hand to a client or publish. What used to take a full day of research and writing now takes minutes.',
+      metrics: ['90% less research time', 'Full report in minutes', 'Consistent output, every time'],
     },
     {
       id: 3, title: 'Document Intelligence Platform',
