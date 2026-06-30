@@ -6,29 +6,18 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    fontFamily: {
-      sans: ['var(--font-space-grotesk)', 'sans-serif'],
-      'space-grotesk': ['var(--font-space-grotesk)', 'sans-serif'],
-      inter: ['var(--font-inter)', 'sans-serif'],
-    },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
+      },
       colors: {
-        violet: {
-          400: '#A78BFA',
-          500: '#8B5CF6',
-          600: '#7C3AED',
-          700: '#6D28D9',
-        },
-        emerald: {
-          400: '#34D399',
-          500: '#10B981',
-        },
+        cyan: { DEFAULT: '#0EA5E9', dim: '#0284C7', light: '#38BDF8' },
+        orange: { DEFAULT: '#F97316' },
+        emerald: { DEFAULT: '#10B981', light: '#34D399' },
       },
       animation: {
-        'pulse-slow': 'pulse-slow 8s ease-in-out infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'slide-in': 'slideIn 0.25s ease',
-        'fade-in-up': 'fadeInUp 0.8s ease forwards',
+        'fade-in-up': 'fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'slide-in': 'slideIn 0.2s ease forwards',
       },
     },
   },

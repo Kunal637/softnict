@@ -1,54 +1,62 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Hero({ onOpenModal }) {
   const canvasRef = useRef(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     let animFrame;
-    let w, h;
 
     const resize = () => {
-      w = canvas.width = canvas.offsetWidth;
-      h = canvas.height = canvas.offsetHeight;
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
     };
     resize();
     window.addEventListener('resize', resize);
 
-    const dots = Array.from({ length: 60 }, () => ({
-      x: Math.random() * 1600,
-      y: Math.random() * 800,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      r: Math.random() * 1.5 + 0.5,
+    const isMobile = window.innerWidth < 640;
+    const dotCount = isMobile ? 35 : 65;
+    const dots = Array.from({ length: dotCount }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25,
+      r: Math.random() * 1.8 + 0.6,
     }));
 
     const draw = () => {
+      const w = canvas.width, h = canvas.height;
       ctx.clearRect(0, 0, w, h);
+      const dotOpacity = theme === 'dark' ? 0.55 : 0.45;
+      const lineOpacity = theme === 'dark' ? 0.13 : 0.10;
+
       dots.forEach((d) => {
         d.x += d.vx; d.y += d.vy;
         if (d.x < 0) d.x = w; if (d.x > w) d.x = 0;
         if (d.y < 0) d.y = h; if (d.y > h) d.y = 0;
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(124,58,237,0.5)';
+        ctx.fillStyle = `rgba(14,165,233,${dotOpacity})`;
         ctx.fill();
       });
+
       for (let i = 0; i < dots.length; i++) {
         for (let j = i + 1; j < dots.length; j++) {
           const dx = dots[i].x - dots[j].x;
           const dy = dots[i].y - dots[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 160) {
+          if (dist < 155) {
             ctx.beginPath();
             ctx.moveTo(dots[i].x, dots[i].y);
             ctx.lineTo(dots[j].x, dots[j].y);
-            ctx.strokeStyle = `rgba(124,58,237,${0.15 * (1 - dist / 160)})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `rgba(14,165,233,${lineOpacity * (1 - dist / 155)})`;
+            ctx.lineWidth = 0.9;
             ctx.stroke();
           }
         }
@@ -57,79 +65,70 @@ export default function Hero({ onOpenModal }) {
     };
     draw();
 
-    return () => {
-      cancelAnimationFrame(animFrame);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
+    return () => { cancelAnimationFrame(animFrame); window.removeEventListener('resize', resize); };
+  }, [theme]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Canvas */}
+    <section id="home" className="relative min-h-[100svh] flex items-center overflow-hidden">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      {/* Gradient orbs */}
-      <div className="absolute top-[-200px] left-[-100px] w-[600px] h-[600px] rounded-full bg-violet-600/20 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] rounded-full bg-emerald-500/10 blur-[100px] pointer-events-none" />
+      <div className="absolute pointer-events-none" style={{ top: '-15%', left: '-8%', width: 500, height: 500, maxWidth: '90vw', borderRadius: '50%', background: 'rgba(14,165,233,0.12)', filter: 'blur(100px)', animation: 'orb-pulse 10s ease-in-out infinite' }} />
+      <div className="absolute pointer-events-none" style={{ bottom: '-10%', right: '-5%', width: 420, height: 420, maxWidth: '90vw', borderRadius: '50%', background: 'rgba(249,115,22,0.07)', filter: 'blur(90px)', animation: 'orb-pulse 14s ease-in-out infinite reverse' }} />
 
-      {/* Content */}
-      <div className="container-custom relative z-10 py-24">
+      <div className="container-custom relative z-10 py-20 sm:py-28">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-600/10 border border-violet-500/20 text-violet-400 text-sm font-medium mb-8 animate-fade-in-up">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            AI-Powered Software Agency
+
+          <div
+            className="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-6 sm:mb-8 animate-fade-in-up"
+            style={{ background: 'rgba(14,165,233,0.08)', border: '1px solid rgba(14,165,233,0.2)', color: '#38BDF8' }}
+          >
+            <span className="glow-dot" />
+            <span className="whitespace-nowrap">AI-Powered Software Agency · Est. 2020</span>
           </div>
 
-          {/* Main heading */}
-          <h1
-            className="heading-lg mb-6 animate-fade-in-up"
-            style={{ animationDelay: '0.1s' }}
-          >
+          <h1 className="heading-lg mb-5 sm:mb-6 animate-fade-in-up px-2" style={{ animationDelay: '0.1s' }}>
             Build smarter.<br />
-            <span className="text-gradient">Scale faster.</span>
+            <span className="text-gradient-warm">Scale faster.</span>
           </h1>
 
-          {/* Subheading */}
           <p
-            className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up"
-            style={{ animationDelay: '0.25s' }}
+            className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed animate-fade-in-up px-2"
+            style={{ animationDelay: '0.22s', color: 'var(--text-muted)' }}
           >
-            We engineer intelligent software — from AI integrations to custom ML systems — 
+            We engineer intelligent software — from AI integrations to custom ML systems —
             so your business operates at the edge of what's possible.
           </p>
 
-          {/* CTAs */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
-            style={{ animationDelay: '0.4s' }}
-          >
-            <button onClick={onOpenModal} className="btn-primary text-base px-8 py-3.5">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-up px-4 sm:px-0" style={{ animationDelay: '0.35s' }}>
+            <button onClick={onOpenModal} className="btn-primary text-sm px-8 py-3.5 sm:py-4 w-full sm:w-auto">
               Start a project
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
-            <a href="#portfolio" className="btn-secondary text-base px-8 py-3.5">
+            <a href="#portfolio" className="btn-secondary text-sm px-8 py-3.5 sm:py-4 w-full sm:w-auto">
               See our work
             </a>
           </div>
 
-          {/* Trust strip */}
           <div
-            className="mt-16 flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm text-gray-500 animate-fade-in-up"
-            style={{ animationDelay: '0.55s' }}
+            className="mt-12 sm:mt-16 pt-6 sm:pt-8 grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-6 animate-fade-in-up"
+            style={{ animationDelay: '0.5s', borderTop: '1px solid var(--border-soft)' }}
           >
-            {['150+ Projects Shipped', '50+ Happy Clients', '98% Accuracy Rate', '5★ Avg. Rating'].map((item) => (
-              <div key={item} className="flex items-center gap-2">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>{item}</span>
+            {[
+              { val: '150+', label: 'Projects Shipped' },
+              { val: '50+', label: 'Happy Clients' },
+              { val: '98%', label: 'Accuracy Rate' },
+              { val: '5★', label: 'Average Rating' },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <p className="text-xl sm:text-2xl font-bold mb-1" style={{ fontFamily: 'var(--font-dm-sans)', color: 'var(--text-primary)' }}>{s.val}</p>
+                <p className="text-[11px] sm:text-xs font-medium" style={{ color: 'var(--text-faint)' }}>{s.label}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050B18] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 pointer-events-none" style={{ background: 'linear-gradient(to top, var(--base), transparent)' }} />
     </section>
   );
 }
